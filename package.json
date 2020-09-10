@@ -26,5 +26,8 @@
     "imperfectandcompany"
   ],
   "author": "Daiyaan Ijaz",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
 }
