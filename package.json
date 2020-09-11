@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "Discord bot for imperfectgamers.org/discord/",
   "main": "index.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "*"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cheesea3/imperfectgamers-discord"
+    "url": "git+https://github.com/cheesea3/imperfectgamers-discord.git"
   },
   "keywords": [
     "discord",
@@ -29,5 +34,10 @@
   "license": "GPL-3.0",
   "dependencies": {
     "discord.js": "^12.3.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/cheesea3/imperfectgamers-discord/issues"
+  },
+  "homepage": "https://github.com/cheesea3/imperfectgamers-discord#readme",
+  "devDependencies": {}
 }
