@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const  boom  = require("./boom");
 const reactionRoles = require("./reactionroles");
 //discord module for node (dependency)
-const config = require("./config.json");
+
 //config file with the BOT_TOKEN
 const prefix = "!";
 //assigns the value "!" to the constant prefix
@@ -14,7 +14,7 @@ const { Client, MessageEmbed } = require('discord.js');
 
 //default description, can be customized based on the command
 
-client.login(config.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
 
 
 client.on('ready', () => {
