@@ -46,8 +46,8 @@ module.exports = {
         //map function allows me to print them one by one
 
         //lists which how many booms there are in total
-
-        let randomBoom = boomGifs[Math.floor(Math.random() * countBooms)];
+        let randomBoom = boomGifs[Math.floor(Math.random() * 3)];
+        //let randomBoom = boomGifs[Math.floor(Math.random() * countBooms)];
         //countbooms helps me set a max based off the array
         //selects random index
 

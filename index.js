@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
 const  boom  = require("./boom");
+const  army  = require("./army");
+const config = require("./config.json");
 const reactionRoles = require("./reactionroles");
 //discord module for node (dependency)
 
@@ -14,9 +16,10 @@ const { Client, MessageEmbed } = require('discord.js');
 
 //default description, can be customized based on the command
 
-client.login(process.env.BOT_TOKEN);
+client.login(config.BOT_TOKEN);
+//client.login(process.env.BOT_TOKEN);
 
-
+!
 client.on('ready', () => {
     console.log(client.user.tag + " has logged in.");
     reactionRoles(client)
@@ -41,14 +44,20 @@ client.on('ready', () => {
 
         //#####COMMAND ~ COMMANDS#####
         if (command === "commands") {
-            message.author.send("COMMANDS\n!boom ~ sends a random explosion")
+            message.author.send("COMMANDS\n")
+            message.author.send("\n!boom ~ sends a random explosion")
+            //message.author.send("\n!army ~ send a random army")
             //private messages user
         }
-
 
         //#####COMMAND ~ BOOM#####
         if (command === "boom") {
             boom.prepare(args, MessageEmbed, message);
         }
-    });
+
+        //#####COMMAND ~ ARMY#####
+        //if (command === "army") {
+        //army(args, MessageEmbed, message);
+        //}
+    //});
 
