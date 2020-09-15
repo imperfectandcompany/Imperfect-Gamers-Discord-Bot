@@ -22,11 +22,11 @@ client.login(config.BOT_TOKEN);
 !
 client.on('ready', () => {
     console.log(client.user.tag + " has logged in.");
-    reactionRoles(client)
+    reactionRoles(client);
 });
 
 //command handler
-    client.on("message", function (message) {
+    client.on("message", message => {
         //discord sends notifications on notifications using the on method
         //on method takes two arguments: name of the event to wait for, and a function to run every time that event occurs
         if (message.author.bot) return;
@@ -44,8 +44,8 @@ client.on('ready', () => {
 
         //#####COMMAND ~ COMMANDS#####
         if (command === "commands") {
-            message.author.send("COMMANDS\n")
-            message.author.send("\n!boom ~ sends a random explosion")
+            message.author.send("COMMANDS\n");
+            message.author.send("\n!boom ~ sends a random explosion");
             //message.author.send("\n!army ~ send a random army")
             //private messages user
         }
