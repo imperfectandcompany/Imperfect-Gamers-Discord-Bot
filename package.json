@@ -34,9 +34,11 @@
   "dependencies": {
     "discord.js": "^12.3.1"
   },
+  "devDependencies": {
+    "eslint": "^7.9.0"
+  },
   "bugs": {
     "url": "https://github.com/cheesea3/imperfectgamers-discord/issues"
   },
-  "homepage": "https://github.com/cheesea3/imperfectgamers-discord#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/cheesea3/imperfectgamers-discord#readme"
 }
