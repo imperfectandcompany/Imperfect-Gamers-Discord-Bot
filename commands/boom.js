@@ -1,5 +1,6 @@
 module.exports = {
-	prepare: function (args, message) {
+	name: "boom",
+	run: function (args, message) {
 	//helper
 		function performBoom() {
 			let boomGifs = [

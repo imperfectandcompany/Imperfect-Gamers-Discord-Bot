@@ -1,6 +1,4 @@
-const  boom  = require("./boom");
-//const  army  = require("./army");
-const reactionRoles = require("./reactionroles");
+const reactionRoles = require("./util/reactionroles");
 //discord module for node (dependency)
 
 //temp config require
@@ -14,24 +12,45 @@ const settings = {
 
 }
 // Extract the required classes from the discord.js module
-const { Client } = require('discord.js');
+const { Collection, Client } = require('discord.js');
 
 //creates a new discord.client and assigns it to the constant client
 const client = new Client();
-
 
 //default description, can be customized based on the command
 
 client.login(settings.BOT_TOKEN);
 //client.login(process.env.BOT_TOKEN);
 
-!
 client.on('ready', () => {
 	//push settings into client object
 	client.settings = settings;
 	console.log(client.user.tag + " has logged in.");
+	fetchCommands();
 	reactionRoles(client);
 });
+
+
+//automatic command handler
+function fetchCommands() {
+	//create new command collection
+	client.command = new Collection();
+	//read ./commands dir
+	require("fs").readdir(__dirname+"/commands", (err, file) => {
+		if (err) console.error(err); //log on error
+		//get all .js file in ./commands and remove all other files from the array
+		let jsfile = file.filter(f => f.split(".").pop() === "js");
+		//return if no .js files found
+		if (jsfile.length <= 0) return console.log("Can't find any command files.");
+		//loop trough all .js files and put them into the command collection
+		jsfile.forEach(file => {
+			let props = require(__dirname+`/commands/${file}`);
+			console.log(file + " loaded!");
+			client.commands.set(props.name, props);
+		});
+	});
+}
+
 
 //command handler
 client.on("message", message => {
@@ -50,8 +69,11 @@ client.on("message", message => {
 	//leaves out the first element in the args array, which is the command name, then makes it lowercase, and leaves
 	//the arguments left to be assigned to the command constant.
 
+	//check if command exists and run
+	if (client.commands.get(command)) client.commands.get(command).run(args, message);
+
 	//#####COMMAND ~ COMMANDS#####
-	if (command === "commands") {
+	/*if (command === "commands") {
 		message.author.send("COMMANDS\n");
 		message.author.send("\n!boom ~ sends a random explosion");
 		//message.author.send("\n!army ~ send a random army")
@@ -67,4 +89,5 @@ client.on("message", message => {
 	//if (command === "army") {
 	//army(args, MessageEmbed, message);
 	//}
+	*/
 });
